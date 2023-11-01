@@ -20,7 +20,7 @@ public class HooksAPI {
     }
 @Before(order=1)
     public void beforeGenerateToken(){
-      token= Authentication.generateToken();
+      token= Authentication.generateToken(ConfigReader.getProperty("email"),ConfigReader.getProperty("password"));
 
 
 

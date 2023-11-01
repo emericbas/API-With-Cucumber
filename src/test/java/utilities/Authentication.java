@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class Authentication {
 
-    private static RequestSpecification spec;
+  /*  private static RequestSpecification spec;
     public static String generateToken(){
         spec=new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("base_url")).build();
         spec.pathParams("pp1","api","pp2","login");
@@ -30,7 +30,33 @@ public class Authentication {
 String token=respJP.getString("token");
         return token;
     }
+*/
 
+    private static RequestSpecification spec;
 
+    public static String generateToken(String email,String password){
+
+        spec = new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("base_url")).build();
+
+        spec.pathParams("pp1","api","pp2","login");
+
+        Map<String,Object> dataCredential = new HashMap<>();
+
+        dataCredential.put("email",ConfigReader.getProperty(email));
+        dataCredential.put("password",ConfigReader.getProperty(password));
+
+        Response response = given()
+                .spec(spec)
+                .contentType(ContentType.JSON).header("Accept","application/json")
+                .body(dataCredential)
+                .when()
+                .post("/{pp1}/{pp2}");
+
+        JsonPath respJP = response.jsonPath();
+
+        String token = respJP.getString("token");
+
+        return token;
+    }
 
 }

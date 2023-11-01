@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="0.788">
-    <testcase classname="Used to create a new user" name="Success Response" time="0.662">
-        <system-out><![CDATA[Given Api kullanicisi "api/register" path parametreleri set eder............passed
-]]></system-out>
-    </testcase>
-</testsuite>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" time="0.109"/>
